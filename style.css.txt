@@ -1,0 +1,326 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Fredoka+One:wght@400&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Comfortaa', cursive;
+    background: linear-gradient(45deg, #ff9a9e, #fecfef, #fecfef, #fad0c4);
+    background-size: 400% 400%;
+    animation: gradientShift 6s ease infinite;
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.background-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.background-hearts::before {
+    content: "💖💕💗💘💝💞💟❤️🧡💛💚💙💜🤍";
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    font-size: 2rem;
+    opacity: 0.1;
+    animation: floatHearts 20s linear infinite;
+    white-space: nowrap;
+}
+
+@keyframes floatHearts {
+    0% { transform: translateX(-100px) translateY(100vh) rotate(0deg); }
+    100% { transform: translateX(100vw) translateY(-100px) rotate(360deg); }
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.main-message {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 3rem;
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(255, 182, 193, 0.3);
+    border: 3px solid #ffb6c1;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-message::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 192, 203, 0.1), transparent);
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%) translateY(-100%) rotate(30deg); }
+    100% { transform: translateX(100%) translateY(100%) rotate(30deg); }
+}
+
+.wobbly-text {
+    font-family: 'Fredoka One', cursive;
+    font-size: 3.5rem;
+    color: #e91e63;
+    text-shadow: 3px 3px 0px #ffb6c1, 6px 6px 0px #ff69b4;
+    animation: wobble 2s ease-in-out infinite;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes wobble {
+    0%, 100% { transform: rotate(-3deg) scale(1); }
+    25% { transform: rotate(3deg) scale(1.05); }
+    50% { transform: rotate(-2deg) scale(1.1); }
+    75% { transform: rotate(2deg) scale(1.05); }
+}
+
+.subtitle {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: #ff1493;
+    position: relative;
+    z-index: 2;
+}
+
+.emoji-bounce {
+    display: inline-block;
+    animation: bounce 1.5s infinite;
+    margin: 0 1rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-20px) rotate(10deg); }
+    60% { transform: translateY(-10px) rotate(-5deg); }
+}
+
+.love-text {
+    font-weight: 700;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px #ff69b4, 0 0 10px #ff69b4, 0 0 15px #ff69b4; }
+    to { text-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493, 0 0 30px #ff1493; }
+}
+
+.emoji-garden {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.floating-emoji {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.8;
+}
+
+.floating-emoji:nth-child(1) { top: 10%; left: 10%; animation-delay: -0.5s; }
+.floating-emoji:nth-child(2) { top: 20%; left: 80%; animation-delay: -1s; }
+.floating-emoji:nth-child(3) { top: 30%; left: 60%; animation-delay: -1.5s; }
+.floating-emoji:nth-child(4) { top: 40%; left: 20%; animation-delay: -2s; }
+.floating-emoji:nth-child(5) { top: 50%; left: 90%; animation-delay: -2.5s; }
+.floating-emoji:nth-child(6) { top: 60%; left: 40%; animation-delay: -3s; }
+.floating-emoji:nth-child(7) { top: 70%; left: 70%; animation-delay: -3.5s; }
+.floating-emoji:nth-child(8) { top: 80%; left: 30%; animation-delay: -4s; }
+.floating-emoji:nth-child(9) { top: 15%; left: 45%; animation-delay: -4.5s; }
+.floating-emoji:nth-child(10) { top: 25%; left: 75%; animation-delay: -5s; }
+.floating-emoji:nth-child(11) { top: 35%; left: 15%; animation-delay: -0.2s; }
+.floating-emoji:nth-child(12) { top: 45%; left: 85%; animation-delay: -0.7s; }
+.floating-emoji:nth-child(13) { top: 55%; left: 55%; animation-delay: -1.2s; }
+.floating-emoji:nth-child(14) { top: 65%; left: 25%; animation-delay: -1.7s; }
+.floating-emoji:nth-child(15) { top: 75%; left: 95%; animation-delay: -2.2s; }
+.floating-emoji:nth-child(16) { top: 85%; left: 65%; animation-delay: -2.7s; }
+.floating-emoji:nth-child(17) { top: 5%; left: 35%; animation-delay: -3.2s; }
+.floating-emoji:nth-child(18) { top: 12%; left: 65%; animation-delay: -3.7s; }
+.floating-emoji:nth-child(19) { top: 22%; left: 25%; animation-delay: -4.2s; }
+.floating-emoji:nth-child(20) { top: 32%; left: 85%; animation-delay: -4.7s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    25% { transform: translateY(-20px) rotate(90deg); }
+    50% { transform: translateY(-40px) rotate(180deg); }
+    75% { transform: translateY(-20px) rotate(270deg); }
+}
+
+.cute-message {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 25px;
+    margin: 2rem 0;
+    text-align: center;
+    box-shadow: 0 15px 30px rgba(255, 105, 180, 0.2);
+    border: 2px solid #ffb6c1;
+    position: relative;
+    z-index: 2;
+}
+
+.pulse-text {
+    font-size: 1.3rem;
+    color: #e91e63;
+    font-weight: 600;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+.heart-divider {
+    margin: 1.5rem 0;
+    font-size: 1.5rem;
+    animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% { transform: scale(1); }
+    14% { transform: scale(1.1); }
+    28% { transform: scale(1); }
+    42% { transform: scale(1.1); }
+    70% { transform: scale(1); }
+}
+
+.shimmer-text {
+    font-size: 1.2rem;
+    color: #ff1493;
+    font-weight: 500;
+    background: linear-gradient(90deg, #ff69b4, #ffb6c1, #ff69b4);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: textShimmer 3s linear infinite;
+}
+
+@keyframes textShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+.dancing-emojis {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    position: relative;
+    z-index: 2;
+}
+
+.dance {
+    font-size: 3rem;
+    display: inline-block;
+    animation: dance 1s infinite;
+}
+
+.dance:nth-child(1) { animation-delay: 0s; }
+.dance:nth-child(2) { animation-delay: 0.2s; }
+.dance:nth-child(3) { animation-delay: 0.4s; }
+.dance:nth-child(4) { animation-delay: 0.6s; }
+.dance:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes dance {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(-10deg) scale(1.2); }
+    50% { transform: rotate(10deg) scale(0.9); }
+    75% { transform: rotate(-5deg) scale(1.1); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .wobbly-text {
+        font-size: 2.5rem;
+    }
+    
+    .subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .main-message {
+        padding: 2rem;
+    }
+    
+    .container {
+        padding: 1rem;
+    }
+    
+    .floating-emoji {
+        font-size: 1.5rem;
+    }
+    
+    .dancing-emojis {
+        gap: 1rem;
+    }
+    
+    .dance {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .wobbly-text {
+        font-size: 2rem;
+    }
+    
+    .subtitle {
+        font-size: 1rem;
+    }
+    
+    .main-message {
+        padding: 1.5rem;
+    }
+    
+    .floating-emoji {
+        font-size: 1.2rem;
+    }
+    
+    .dance {
+        font-size: 1.5rem;
+    }
+    
+    .pulse-text {
+        font-size: 1.1rem;
+    }
+    
+    .shimmer-text {
+        font-size: 1rem;
+    }
+}
