@@ -1,0 +1,132 @@
+// Additional JavaScript for extra cuteness and interactivity
+
+// Create additional floating hearts on click
+document.addEventListener('click', function(e) {
+    createClickHeart(e.clientX, e.clientY);
+});
+
+function createClickHeart(x, y) {
+    const heart = document.createElement('div');
+    heart.innerHTML = ['💖', '💕', '💗', '💘', '💝', '💞'][Math.floor(Math.random() * 6)];
+    heart.style.position = 'fixed';
+    heart.style.left = x + 'px';
+    heart.style.top = y + 'px';
+    heart.style.fontSize = '2rem';
+    heart.style.pointerEvents = 'none';
+    heart.style.zIndex = '1000';
+    heart.style.animation = 'clickHeartAnimation 2s ease-out forwards';
+    
+    document.body.appendChild(heart);
+    
+    // Remove the heart after animation
+    setTimeout(() => {
+        if (heart.parentNode) {
+            heart.parentNode.removeChild(heart);
+        }
+    }, 2000);
+}
+
+// Add CSS for click heart animation
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes clickHeartAnimation {
+        0% {
+            transform: translateY(0) scale(1) rotate(0deg);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-100px) scale(0) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(style);
+
+// Add random sparkle effects
+function createSparkle() {
+    const sparkle = document.createElement('div');
+    sparkle.innerHTML = '✨';
+    sparkle.style.position = 'fixed';
+    sparkle.style.left = Math.random() * window.innerWidth + 'px';
+    sparkle.style.top = Math.random() * window.innerHeight + 'px';
+    sparkle.style.fontSize = '1rem';
+    sparkle.style.pointerEvents = 'none';
+    sparkle.style.zIndex = '999';
+    sparkle.style.animation = 'sparkleAnimation 3s ease-out forwards';
+    
+    document.body.appendChild(sparkle);
+    
+    setTimeout(() => {
+        if (sparkle.parentNode) {
+            sparkle.parentNode.removeChild(sparkle);
+        }
+    }, 3000);
+}
+
+// Add sparkle animation CSS
+const sparkleStyle = document.createElement('style');
+sparkleStyle.textContent = `
+    @keyframes sparkleAnimation {
+        0% {
+            transform: scale(0) rotate(0deg);
+            opacity: 1;
+        }
+        50% {
+            transform: scale(1) rotate(180deg);
+            opacity: 1;
+        }
+        100% {
+            transform: scale(0) rotate(360deg);
+            opacity: 0;
+        }
+    }
+`;
+document.head.appendChild(sparkleStyle);
+
+// Create sparkles periodically
+setInterval(createSparkle, 2000);
+
+// Add hover effects to dancing emojis
+const dancingEmojis = document.querySelectorAll('.dance');
+dancingEmojis.forEach((emoji, index) => {
+    emoji.addEventListener('mouseenter', function() {
+        this.style.transform = 'scale(1.5) rotate(360deg)';
+        this.style.transition = 'transform 0.5s ease';
+    });
+    
+    emoji.addEventListener('mouseleave', function() {
+        this.style.transform = 'scale(1) rotate(0deg)';
+    });
+});
+
+// Add gentle mouse follow effect to main message
+const mainMessage = document.querySelector('.main-message');
+document.addEventListener('mousemove', function(e) {
+    const rect = mainMessage.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    
+    const deltaX = (e.clientX - centerX) / 50;
+    const deltaY = (e.clientY - centerY) / 50;
+    
+    mainMessage.style.transform = `translate(${deltaX}px, ${deltaY}px)`;
+});
+
+// Add random color changes to floating emojis
+const floatingEmojis = document.querySelectorAll('.floating-emoji');
+setInterval(() => {
+    floatingEmojis.forEach(emoji => {
+        const hue = Math.random() * 360;
+        emoji.style.filter = `hue-rotate(${hue}deg)`;
+    });
+}, 5000);
+
+// Add heartbeat effect to the main title on hover
+const woblyText = document.querySelector('.wobbly-text');
+woblyText.addEventListener('mouseenter', function() {
+    this.style.animation = 'wobble 0.5s ease-in-out infinite, heartBeat 1s infinite';
+});
+
+woblyText.addEventListener('mouseleave', function() {
+    this.style.animation = 'wobble 2s ease-in-out infinite';
+});
