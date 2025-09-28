@@ -1,6 +1,3 @@
-// Additional JavaScript for extra cuteness and interactivity
-
-// Create additional floating hearts on click
 document.addEventListener('click', function(e) {
     createClickHeart(e.clientX, e.clientY);
 });
